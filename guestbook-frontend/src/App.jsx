@@ -28,27 +28,38 @@ function App() {
     };
 
     return (
-        <div>
-            <h1>Guestbook</h1>
-            <form onSubmit={handleSubmit}>
+        <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6">
+            <h1 className="text-4xl font-bold text-blue-600 mb-6">Guestbook</h1>
+            <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-6 w-full max-w-md">
                 <input
+                    className="mb-4 w-full px-3 py-2 border rounded"
                     name="name"
                     onChange={handleChange}
                     placeholder="Your name"
                     value={form.name}
                 />
                 <textarea
+                    className="mb-4 w-full px-3 py-2 border rounded h-24"
                     name="message"
                     onChange={handleChange}
                     placeholder="Your message"
                     value={form.message}
                 />
-                <button type="submit">Sign</button>
+                <button
+                    className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+                    type="submit"
+                >
+                    Sign
+                </button>
             </form>
-            <ul>
+            <ul className="w-full max-w-md space-y-4">
                 {messages.map(msg => (
-                    <li key={msg.id}>
-                        <strong>{msg.name}</strong>: {msg.message}
+                    <li
+                        className="bg-white p-4 rounded shadow"
+                        key={msg.id}
+                    >
+                        <p className="text-gray-800"><strong>{msg.name}</strong></p>
+                        <p className="text-gray-600">{msg.message}</p>
                     </li>
                 ))}
             </ul>
